@@ -1,4 +1,4 @@
-## To-Do + Pomodoro
+## pomodoro-todo
 
 ### ✅ 핵심 목적
 - CRUD 기반의 상태관리 학습
