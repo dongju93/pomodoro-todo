@@ -1,11 +1,10 @@
-// eslint.config.js
 import js from "@eslint/js"; // ESLint 기본 recommended 룰셋
-import globals from "globals"; // 브라우저 + ES2021 글로벌 변수 정의
 import react from "eslint-plugin-react"; // React-specific lint 규칙
 import reactHooks from "eslint-plugin-react-hooks"; // React Hooks lint 규칙
 import reactRefresh from "eslint-plugin-react-refresh"; // Vite React Fast Refresh 안전성 체크
-import tailwindcss from "eslint-plugin-tailwindcss"; // Tailwind className 검사
 import simpleImportSort from "eslint-plugin-simple-import-sort"; // import/export 자동 정렬
+// import tailwindcss from "eslint-plugin-tailwindcss"; // Tailwind className 검사
+import globals from "globals"; // 브라우저 + ES2021 글로벌 변수 정의
 
 export default [
     { ignores: ["dist", "node_modules"] }, // lint 검사에서 빌드 결과물과 라이브러리 폴더 제외
@@ -26,7 +25,7 @@ export default [
             react, // react 플러그인 등록
             "react-hooks": reactHooks, // react-hooks 플러그인 등록
             "react-refresh": reactRefresh, // react-refresh 플러그인 등록
-            tailwindcss, // tailwindcss 플러그인 등록
+            // tailwindcss, // tailwindcss 플러그인 등록
             "simple-import-sort": simpleImportSort, // import 정렬 플러그인 등록
         },
         rules: {
@@ -43,9 +42,10 @@ export default [
                 "warn",
                 { allowConstantExport: true },
             ], // Fast Refresh를 깨지 않게 export 제한
-            "tailwindcss/no-custom-classname": "off", // tailwind className 직접 지정 제한 해제
+            // "tailwindcss/no-custom-classname": "off", // tailwind className 직접 지정 제한 해제
             "simple-import-sort/imports": "error", // import 정렬 필수
             "simple-import-sort/exports": "error", // export 정렬 필수
+            "react/react-in-jsx-scope": "off", // React 17+에서는 JSX에 React import 필요 없음
         },
         settings: {
             react: {
