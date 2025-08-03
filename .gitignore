@@ -190,4 +190,6 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/macos,react,node
 
 codeql/
+.serena/
+.claude/
 CLAUDE.md
