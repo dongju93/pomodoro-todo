@@ -17,24 +17,25 @@ export const TodoFilters = () => {
   };
 
   return (
-    <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+    <div className="mb-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:mb-6 sm:p-4 dark:border-slate-700 dark:bg-slate-800">
       <div className="flex flex-col gap-3 sm:gap-4">
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-2">
-            <FiFilter className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
-            <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+            <FiFilter className="h-4 w-4 text-slate-500 sm:h-5 sm:w-5" />
+            <span className="font-medium text-slate-600 text-xs sm:text-sm dark:text-slate-400">
               Filter:
             </span>
           </div>
-          <div className="flex gap-1 sm:gap-2 flex-wrap">
+          <div className="flex flex-wrap gap-1 sm:gap-2">
             {(["All", "Work", "Study", "Personal"] as const).map((tagOption) => (
               <button
+                type="button"
                 key={tagOption}
                 onClick={() => setFilter(tagOption)}
-                className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-full transition-all ${
+                className={`rounded-full px-2 py-1 font-medium text-xs transition-all sm:px-3 ${
                   filter === tagOption
                     ? getTagColor(tagOption)
-                    : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600"
                 }`}
               >
                 {tagOption}
@@ -43,17 +44,17 @@ export const TodoFilters = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-2">
-            <FiArrowDown className="w-4 h-4 sm:w-5 sm:h-5 text-slate-500" />
-            <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+            <FiArrowDown className="h-4 w-4 text-slate-500 sm:h-5 sm:w-5" />
+            <span className="font-medium text-slate-600 text-xs sm:text-sm dark:text-slate-400">
               Sort by:
             </span>
           </div>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as "dateAdded" | "dueDate" | "tag")}
-            className="px-2 sm:px-3 py-1 text-xs sm:text-sm bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-xs transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:px-3 sm:text-sm dark:border-slate-600 dark:bg-slate-700"
           >
             <option value="dateAdded">Date Added</option>
             <option value="dueDate">Due Date</option>

@@ -141,7 +141,7 @@ export const useTodoStore = create<TodoStore>()(
       onRehydrateStorage: () => (state) => {
         if (state) {
           // Migrate existing todos that don't have tags
-          state.todos = state.todos.map((todo: any) => ({
+          state.todos = state.todos.map((todo: Partial<Todo>) => ({
             ...todo,
             tag: todo.tag || "Personal", // Default tag for existing todos
             dateAdded:

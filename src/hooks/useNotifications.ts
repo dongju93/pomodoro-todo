@@ -11,7 +11,6 @@ export const useNotifications = () => {
       // Request notification permission on component mount
       if (Notification.permission === "default") {
         Notification.requestPermission().then((permission) => {
-          console.log("Notification permission:", permission);
           setPermission(permission);
         });
       }
@@ -19,12 +18,6 @@ export const useNotifications = () => {
   }, []);
 
   const showNotification = (title: string, body: string) => {
-    console.log("Attempting to show notification:", {
-      title,
-      body,
-      permission,
-    });
-
     if ("Notification" in window) {
       if (permission === "granted") {
         try {
@@ -37,35 +30,24 @@ export const useNotifications = () => {
             silent: false,
           });
 
-          console.log("Notification created successfully:", notification);
-
           notification.onclick = () => {
-            console.log("Notification clicked");
             notification.close();
           };
 
-          notification.onerror = (error) => {
-            console.error("Notification error:", error);
-          };
+          notification.onerror = (_error) => {};
 
           return notification;
-        } catch (error) {
-          console.error("Failed to create notification:", error);
-        }
+        } catch (_error) {}
       } else if (permission === "default") {
-        console.log("Requesting notification permission...");
         Notification.requestPermission().then((newPermission) => {
-          console.log("New permission:", newPermission);
           setPermission(newPermission);
           if (newPermission === "granted") {
             showNotification(title, body);
           }
         });
       } else {
-        console.warn("Notifications are denied");
       }
     } else {
-      console.error("Notifications not supported");
     }
   };
 
@@ -101,8 +83,7 @@ export const useNotifications = () => {
         const newPermission = await Notification.requestPermission();
         setPermission(newPermission);
         return newPermission;
-      } catch (error) {
-        console.error("Permission request failed:", error);
+      } catch (_error) {
         return "denied";
       }
     }

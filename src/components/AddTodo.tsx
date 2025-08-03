@@ -39,50 +39,50 @@ export const AddTodo = () => {
 
   return (
     <form onSubmit={handleSubmit} className="mb-6 sm:mb-8">
-      <div className="flex flex-col gap-4 p-4 sm:p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+      <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg sm:p-6 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex gap-2 sm:gap-3">
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Add a new todo..."
-            className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+            className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:px-4 sm:py-3 sm:text-base dark:border-slate-600 dark:bg-slate-700"
           />
           <button
             type="button"
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className={`p-2 sm:p-3 rounded-xl transition-all ${
+            className={`rounded-xl p-2 transition-all sm:p-3 ${
               showAdvanced
                 ? "bg-indigo-500 text-white"
-                : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
             }`}
           >
-            <FiMoreHorizontal className="w-4 h-4 sm:w-5 sm:h-5" />
+            <FiMoreHorizontal className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
           <button
             type="submit"
             disabled={!text.trim()}
-            className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:from-indigo-600 hover:to-purple-700 transition-all transform hover:scale-105 active:scale-95"
+            className="transform rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-2 font-medium text-white transition-all hover:scale-105 hover:from-indigo-600 hover:to-purple-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6 sm:py-3"
           >
-            <FiPlus className="w-4 h-4 sm:w-5 sm:h-5" />
+            <FiPlus className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>
 
         {showAdvanced && (
-          <div className="space-y-3 animate-in slide-in-from-top-2 duration-300">
+          <div className="slide-in-from-top-2 animate-in space-y-3 duration-300">
             <div className="flex items-center gap-3">
-              <FiTag className="w-5 h-5 text-slate-500" />
-              <span className="text-sm text-slate-600 dark:text-slate-400 w-16">Tag:</span>
+              <FiTag className="h-5 w-5 text-slate-500" />
+              <span className="w-16 text-slate-600 text-sm dark:text-slate-400">Tag:</span>
               <div className="flex gap-2">
                 {(["Work", "Study", "Personal"] as TodoTag[]).map((tagOption) => (
                   <button
                     key={tagOption}
                     type="button"
                     onClick={() => setTag(tagOption)}
-                    className={`px-3 py-1 text-xs font-medium rounded-full transition-all ${
+                    className={`rounded-full px-3 py-1 font-medium text-xs transition-all ${
                       tag === tagOption
                         ? getTagColor(tagOption)
-                        : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600"
+                        : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600"
                     }`}
                   >
                     {tagOption}
@@ -91,17 +91,17 @@ export const AddTodo = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 flex-wrap">
-              <FiClock className="w-5 h-5 text-slate-500" />
-              <span className="text-sm text-slate-600 dark:text-slate-400 w-16">Timer:</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <FiClock className="h-5 w-5 text-slate-500" />
+              <span className="w-16 text-slate-600 text-sm dark:text-slate-400">Timer:</span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setTimeInMinutes(25)}
-                  className={`px-3 py-1 text-xs font-medium rounded-full transition-all ${
+                  className={`rounded-full px-3 py-1 font-medium text-xs transition-all ${
                     timeInMinutes === 25
                       ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600"
                   }`}
                 >
                   🍅 25min
@@ -109,10 +109,10 @@ export const AddTodo = () => {
                 <button
                   type="button"
                   onClick={() => setTimeInMinutes(5)}
-                  className={`px-3 py-1 text-xs font-medium rounded-full transition-all ${
+                  className={`rounded-full px-3 py-1 font-medium text-xs transition-all ${
                     timeInMinutes === 5
                       ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600"
                   }`}
                 >
                   ☕ 5min
@@ -120,10 +120,10 @@ export const AddTodo = () => {
                 <button
                   type="button"
                   onClick={() => setTimeInMinutes(15)}
-                  className={`px-3 py-1 text-xs font-medium rounded-full transition-all ${
+                  className={`rounded-full px-3 py-1 font-medium text-xs transition-all ${
                     timeInMinutes === 15
                       ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-                      : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600"
                   }`}
                 >
                   ⚡ 15min
@@ -138,21 +138,21 @@ export const AddTodo = () => {
                 placeholder="0"
                 min="1"
                 max="120"
-                className="w-20 px-3 py-1 text-sm bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                className="w-20 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700"
               />
-              <span className="text-sm text-slate-500">minutes</span>
+              <span className="text-slate-500 text-sm">minutes</span>
             </div>
 
             <div className="flex items-center gap-3">
-              <FiCalendar className="w-5 h-5 text-slate-500" />
-              <span className="text-sm text-slate-600 dark:text-slate-400 w-16">Due:</span>
+              <FiCalendar className="h-5 w-5 text-slate-500" />
+              <span className="w-16 text-slate-600 text-sm dark:text-slate-400">Due:</span>
               <input
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="px-3 py-1 text-sm bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-sm transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700"
               />
-              <span className="text-sm text-slate-500">(optional)</span>
+              <span className="text-slate-500 text-sm">(optional)</span>
             </div>
           </div>
         )}

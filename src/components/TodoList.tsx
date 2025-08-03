@@ -19,7 +19,6 @@ export const TodoList = () => {
         return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
       case "tag":
         return a.tag.localeCompare(b.tag);
-      case "dateAdded":
       default:
         return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
     }
@@ -30,11 +29,11 @@ export const TodoList = () => {
 
   if (todos.length === 0) {
     return (
-      <div className="text-center py-12">
-        <div className="w-24 h-24 mx-auto mb-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+      <div className="py-12 text-center">
+        <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700">
           <span className="text-4xl">📝</span>
         </div>
-        <h3 className="text-lg font-medium text-slate-600 dark:text-slate-400 mb-2">
+        <h3 className="mb-2 font-medium text-lg text-slate-600 dark:text-slate-400">
           No todos yet
         </h3>
         <p className="text-slate-500 dark:text-slate-500">
@@ -49,11 +48,11 @@ export const TodoList = () => {
       <TodoFilters />
 
       {sortedTodos.length === 0 && filter !== "All" && (
-        <div className="text-center py-8">
-          <div className="w-16 h-16 mx-auto mb-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center">
+        <div className="py-8 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700">
             <span className="text-2xl">🔍</span>
           </div>
-          <h3 className="text-lg font-medium text-slate-600 dark:text-slate-400 mb-2">
+          <h3 className="mb-2 font-medium text-lg text-slate-600 dark:text-slate-400">
             No {filter.toLowerCase()} todos
           </h3>
           <p className="text-slate-500 dark:text-slate-500">
@@ -64,8 +63,8 @@ export const TodoList = () => {
 
       {activeTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
+          <h2 className="mb-4 flex items-center gap-2 font-semibold text-lg text-slate-800 dark:text-slate-200">
+            <span className="h-2 w-2 rounded-full bg-indigo-500"></span>
             Active ({activeTodos.length})
           </h2>
           <div className="space-y-3">
@@ -78,8 +77,8 @@ export const TodoList = () => {
 
       {completedTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          <h2 className="mb-4 flex items-center gap-2 font-semibold text-lg text-slate-800 dark:text-slate-200">
+            <span className="h-2 w-2 rounded-full bg-green-500"></span>
             Completed ({completedTodos.length})
           </h2>
           <div className="space-y-3">

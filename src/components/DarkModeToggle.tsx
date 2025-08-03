@@ -29,14 +29,15 @@ export const DarkModeToggle = () => {
 
   return (
     <button
+      type="button"
       onClick={toggleDarkMode}
-      className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+      className="rounded-lg border border-slate-200 bg-slate-100 p-2 transition-all hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (
-        <FiSun className="w-5 h-5 text-yellow-500" />
+        <FiSun className="h-5 w-5 text-yellow-500" />
       ) : (
-        <FiMoon className="w-5 h-5 text-slate-600" />
+        <FiMoon className="h-5 w-5 text-slate-600" />
       )}
     </button>
   );
