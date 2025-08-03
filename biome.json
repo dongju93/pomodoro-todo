@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["dist", "node_modules", "*.config.js", "*.config.ts"]
+    "includes": ["src/**/*", "*.config.js", "*.config.ts", "*.json"],
+    "experimentalScannerIgnores": [
+      "dist",
+      "node_modules",
+      "codeql/**",
+      ".claude/**",
+      "playground/**"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -17,9 +24,6 @@
     "lineEnding": "lf",
     "lineWidth": 100,
     "attributePosition": "auto"
-  },
-  "organizeImports": {
-    "enabled": true
   },
   "linter": {
     "enabled": true,
@@ -57,7 +61,7 @@
   },
   "overrides": [
     {
-      "include": ["*.ts", "*.tsx"],
+      "includes": ["*.ts", "*.tsx"],
       "linter": {
         "rules": {
           "style": {
